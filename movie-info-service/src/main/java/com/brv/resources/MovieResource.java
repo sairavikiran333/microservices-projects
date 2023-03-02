@@ -30,11 +30,7 @@ public class MovieResource {
 	public Movie getMovieInfo(@PathVariable("movieId")String movieId) {
 		
 		String url = "https://api.themoviedb.org/3/movie/"+movieId+"?api_key="+apiKey+"&language=en-US";
-		System.out.println("-----------------------------");
-		System.out.println("url:: " + url);
-		System.out.println("----------------------");
 		MovieSummary movieSummary = restTemplate.getForObject(url, MovieSummary.class);
-		System.out.println("url:: " + url);
 		return new Movie(movieId,movieSummary.getTitle(),movieSummary.getOverview());
 	}
 }
